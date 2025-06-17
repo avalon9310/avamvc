@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewData["Title"] = "我的專案";
+}
+
+<style>
+    body {
+        background: linear-gradient(to right, #dbe6f6, #aa8168); /* 棕色系背景 */
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    h1, h2, h5, p, li, a {
+        color: black;
+    }
+
+    .card.glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        color: black;
+        transition: transform 0.3s ease;
+    }
+
+        .card.glass:hover {
+            transform: translateY(-5px);
+        }
+
+    a.btn {
+        margin-top: 10px;
+    }
+
+    .text-white a {
+        color: #f5f5f5;
+    }
+
+</style>
+
+<section>
+    <h2 class="text-center">我的專案</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col" data-aos="fade-up" data-aos-duration="800">
+            <div class="card glass h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">KKBOX音樂機器人</h5>
+                    <a href="https://line.me/R/ti/p/@@149zfgzm" target="_blank" class="btn btn-success">
+                        <i class="bi bi-chat-dots"></i> 加入LINE官方帳號
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col" data-aos="fade-up" data-aos-duration="800">
+            <div class="card glass h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">簡易記帳系統</h5>
+                    <a href="https://spending-msu5.onrender.com" target="_blank" class="btn btn-warning text-dark">
+                        <i class="bi bi-box-arrow-up-right"></i> 前往
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col" data-aos="fade-up" data-aos-duration="800">
+            <div class="card glass h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">ytdo-GUI</h5>
+                    <a href="https://github.com/avalon9310/ytdo-GUI" target="_blank" class="btn btn-dark">
+                        <i class="bi bi-github"></i> 傳送門
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
