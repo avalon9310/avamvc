@@ -41,11 +41,11 @@ namespace avamvc.Areas.Identity.Pages.Account {
         public string ErrorMessage { get; set; }
 
         public class InputModel {
-            [Required]
+            [Required(ErrorMessage = "請輸入帳號或Email!")]
             [Display(Name = "帳號或Email")]
             public string LoginIdentifier { get; set; }  // 可輸入帳號或Email
 
-            [Required]
+            [Required(ErrorMessage = "請輸入密碼!")]
             [DataType(DataType.Password)]
             [Display(Name = "密碼")]
             public string Password { get; set; }
