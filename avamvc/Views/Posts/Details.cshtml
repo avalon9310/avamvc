@@ -1,0 +1,16 @@
+﻿@* 取用資料夾檔案Models.Post可以透過Model.xx取用資料 *@
+@model avamvc.Models.Post
+
+<h2>@Model.Title</h2>
+<p>發佈時間: @Model.CreatedAt.ToString("yyyy-MM-dd HH:mm")</p>
+<p>@Model.Content</p>
+
+@if (!string.IsNullOrEmpty(Model.FilePath))
+{
+    <p>附件：<a href="@Model.FilePath" download>下載檔案</a></p>
+}
+
+@if (User.Identity.Name == "1avalon")  
+{
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">修改文章</a>
+}

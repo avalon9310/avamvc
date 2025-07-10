@@ -1,0 +1,18 @@
+﻿@model avamvc.Models.Post
+
+@{
+    ViewData["Title"] = "刪除文章";
+}
+
+<h2>你確定要刪除這篇文章嗎？</h2>
+
+<div>
+    <h4>@Model.Title</h4>
+    <p>@Model.Content</p>
+    
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">刪除</button>
+        <a asp-action="Index" class="btn btn-secondary">取消</a>
+    </form>
+</div>
