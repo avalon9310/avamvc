@@ -1,6 +1,8 @@
 ﻿@* 取用資料夾檔案Models.Post可以透過Model.xx取用資料 *@
 @model avamvc.Models.Post
-
+@{
+    ViewData["Title"] = Model.Title;
+}
 <h2>@Model.Title</h2>
 <p>發佈時間: @Model.CreatedAt.ToString("yyyy-MM-dd HH:mm")</p>
 <p>@Model.Content</p>

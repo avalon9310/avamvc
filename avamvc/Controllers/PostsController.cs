@@ -21,7 +21,7 @@ namespace avamvc.Controllers {
             return View(await _context.Posts.OrderByDescending(p => p.CreatedAt).ToListAsync());
         }
 
-        // 如果有登入 進入Create
+        // 建立功能
         [Authorize]
         public IActionResult Create() {
             if (User.Identity.Name != "1avalon") {
@@ -70,13 +70,13 @@ namespace avamvc.Controllers {
             return RedirectToAction(nameof(Index));
         }
 
-
+        //檢視功能
         public async Task<IActionResult> Details(int? id) {
             if (id == null)
                 return NotFound();
 
             var post = await _context.Posts
-                .Include(p => p.Author) // 如果你要顯示作者資料
+                .Include(p => p.Author) // 如果要顯示作者資料
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (post == null)
@@ -85,8 +85,70 @@ namespace avamvc.Controllers {
             return View(post);
         }
 
+        // 修改功能
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Edit(int? id) {
+            if (User.Identity.Name != "1avalon") return Forbid();
 
-        // 顯示確認刪除頁面
+            if (id == null) return NotFound();
+
+            var post = await _context.Posts.FindAsync(id);
+            if (post == null) return NotFound();
+
+            return View(post);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Post editedPost, IFormFile? uploadFile, bool removeFile = false) {
+            if (User.Identity.Name != "1avalon") return Forbid();
+
+            var post = await _context.Posts.FindAsync(id);
+            if (post == null) return NotFound();
+
+            if (ModelState.IsValid) {
+                // 更新標題與內容
+                post.Title = editedPost.Title;
+                post.Content = editedPost.Content;
+
+                // 移除附加檔案
+                if (removeFile && !string.IsNullOrEmpty(post.FilePath)) {
+                    var oldPath = Path.Combine("wwwroot", post.FilePath.TrimStart('/'));
+                    if (System.IO.File.Exists(oldPath)) System.IO.File.Delete(oldPath);
+                    post.FilePath = null;
+                }
+
+                // 有新檔案上傳就覆蓋
+                if (uploadFile != null && uploadFile.Length > 0) {
+                    var fileName = Path.GetFileName(uploadFile.FileName);
+                    var filePath = Path.Combine("wwwroot/uploads", fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create)) {
+                        await uploadFile.CopyToAsync(stream);
+                    }
+
+                    post.FilePath = "/uploads/" + fileName;
+                }
+
+                _context.Update(post);
+                await _context.SaveChangesAsync();
+
+                // ✅ 修改完回到文章列表
+                return RedirectToAction("Index");
+            }
+
+            // ModelState 有錯，回到編輯畫面
+            return RedirectToAction("Index");
+        }
+
+
+
+
+
+
+        // 刪除功能
         [Authorize]
         public async Task<IActionResult> Delete(int? id) {
             if (id == null) return NotFound();
@@ -96,7 +158,7 @@ namespace avamvc.Controllers {
 
             if (post == null) return NotFound();
 
-            
+
             if (User.Identity.Name != "1avalon") return Forbid();
 
             return View(post); // 回傳確認刪除頁面

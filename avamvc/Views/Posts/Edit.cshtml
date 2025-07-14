@@ -1,0 +1,61 @@
+﻿@model avamvc.Models.Post
+@{
+    ViewData["Title"] = "編輯文章";
+}
+
+<h2>編輯文章</h2>
+
+<form asp-action="Edit" asp-route-id="@Model.Id" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Content" class="form-label"></label>
+        <textarea asp-for="Content" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="Content" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">上傳新檔案（選填）</label>
+        <input type="file" name="uploadFile" class="form-control" />
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.FilePath))
+{
+    <div class="mb-3">
+        <p>
+        目前檔案：
+        <a href="@Model.FilePath" target="_blank">
+            @Model.FilePath
+        </a>
+        </p>
+
+        <!-- 移除檔案按鈕 -->
+        <button type="button" id="removeFileBtn" class="btn btn-danger btn-sm">移除檔案</button>
+
+        <!-- 隱藏欄位讓後端知道要移除 -->
+        <input type="hidden" name="removeFile" id="removeFile" value="false" />
+    </div>
+}
+
+
+    <button type="submit" class="btn btn-success">儲存變更</button>
+    <a asp-action="Index" class="btn btn-secondary">返回</a>
+</form>
+
+@section Scripts {
+    <script>
+        document.getElementById("removeFileBtn").addEventListener("click", function () {
+            if (confirm("確定要移除這個檔案嗎？")) {
+                document.getElementById("removeFile").value = "true";
+                alert("檔案已標記為移除，儲存後將會刪除。");
+            }
+        });
+    </script>
+}
+
