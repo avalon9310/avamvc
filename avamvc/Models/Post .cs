@@ -14,6 +14,8 @@ namespace avamvc.Models {
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
+        public DateTime EditAt { get; set; } = DateTime.Now;
+
         public string? AuthorId { get; set; } // 對應 IdentityUser.Id
         public IdentityUser? Author { get; set; }
 

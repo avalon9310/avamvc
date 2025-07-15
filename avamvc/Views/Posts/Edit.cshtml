@@ -31,7 +31,7 @@
         <p>
         目前檔案：
         <a href="@Model.FilePath" target="_blank">
-            @Model.FilePath
+              @System.IO.Path.GetFileName(Model.FilePath)
         </a>
         </p>
 

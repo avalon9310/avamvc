@@ -8,6 +8,6 @@ namespace avamvc.Data {
             : base(options) {
         }
 
-        public DbSet<Post> Posts { get; set; } // 加在這裡
+        public DbSet<Post> Posts { get; set; } // 資料庫模型
     }
 }

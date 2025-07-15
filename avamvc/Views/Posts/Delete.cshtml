@@ -8,8 +8,7 @@
 
 <div>
     <h4>@Model.Title</h4>
-    <p>@Model.Content</p>
-    
+    <p class="break-content">@Model.Content</p>
     <form asp-action="Delete" method="post">
         <input type="hidden" asp-for="Id" />
         <button type="submit" class="btn btn-danger">刪除</button>

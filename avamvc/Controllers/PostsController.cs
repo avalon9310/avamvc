@@ -108,6 +108,8 @@ namespace avamvc.Controllers {
             var post = await _context.Posts.FindAsync(id);
             if (post == null) return NotFound();
 
+            post.EditAt = DateTime.Now;
+
             if (ModelState.IsValid) {
                 // 更新標題與內容
                 post.Title = editedPost.Title;
@@ -165,9 +167,9 @@ namespace avamvc.Controllers {
         }
 
         // 接收確認刪除表單送出
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id) {
+        public async Task<IActionResult> Delete(int id) {
             var post = await _context.Posts.FindAsync(id);
             if (post == null) return NotFound();
 
