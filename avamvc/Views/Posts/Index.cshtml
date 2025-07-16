@@ -7,7 +7,7 @@
 @if (User.Identity.IsAuthenticated && User.Identity.Name == "1avalon") {
     <a class="btn btn-primary mb-3" asp-action="Create">新增文章</a>
 }
-
+<hr />
 @foreach (var post in Model)
 {
     <div class="mb-4">
