@@ -18,6 +18,7 @@ namespace avamvc.Controllers {
 
         // 所有人可見
         public async Task<IActionResult> Index() {
+
             return View(await _context.Posts.OrderByDescending(p => p.CreatedAt).ToListAsync());
         }
 
@@ -50,6 +51,9 @@ namespace avamvc.Controllers {
             post.CreatedAt = DateTime.Now;
 
             if (uploadFile != null && uploadFile.Length > 0) {
+                //檔名前面加上日期、時間等
+                //string datePrefix = DateTime.Now.ToString("yyyyMMdd_HH:mm");
+                //var fileName = datePrefix + Path.GetFileName(uploadFile.FileName);
                 var fileName = Path.GetFileName(uploadFile.FileName);
                 var filePath = Path.Combine("wwwroot/uploads", fileName);
 
