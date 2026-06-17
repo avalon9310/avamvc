@@ -2,13 +2,20 @@ using avamvc.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//options.UseSqlServer(connectionString)); //本地測試開這裡
-options.UseNpgsql(connectionString)); //上傳git用這裡
+builder.Services.AddDbContext<ApplicationDbContext>(options => {
+#if DEBUG
+    // 本機開發按下 F5 執行時，自動啟用 SQL Server
+    options.UseSqlServer(connectionString);
+#else
+    // 推送到 Git、Render 雲端打包時，自動啟用 PostgreSQL
+    options.UseNpgsql(connectionString);
+#endif
+});
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
