@@ -12,7 +12,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
     // 本機開發按下 F5 執行時，自動啟用 SQL Server
     options.UseSqlServer(connectionString);
 #else
-    // 推送到 Git、Render 雲端打包時，自動啟用 PostgreSQL
+        // 推送到 Git、Render 雲端打包時，自動啟用 PostgreSQL
     options.UseNpgsql(connectionString);
 #endif
 });

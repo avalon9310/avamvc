@@ -24,19 +24,19 @@ namespace avamvc.Data.Migrations {
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b => {
                 b.Property<string>("Id")
-                    .HasColumnType("nvarchar(450)");
+                    .HasColumnType("character varying(450)");
 
                 b.Property<string>("ConcurrencyStamp")
                     .IsConcurrencyToken()
-                    .HasColumnType("nvarchar(max)");
+                    .HasColumnType("text");
 
                 b.Property<string>("Name")
                     .HasMaxLength(256)
-                    .HasColumnType("nvarchar(256)");
+                    .HasColumnType("character varying(256)");
 
                 b.Property<string>("NormalizedName")
                     .HasMaxLength(256)
-                    .HasColumnType("nvarchar(256)");
+                    .HasColumnType("character varying(256)");
 
                 b.HasKey("Id");
 
@@ -56,14 +56,14 @@ namespace avamvc.Data.Migrations {
                 SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                 b.Property<string>("ClaimType")
-                    .HasColumnType("nvarchar(max)");
+                    .HasColumnType("text");
 
                 b.Property<string>("ClaimValue")
-                    .HasColumnType("nvarchar(max)");
+                    .HasColumnType("text");
 
                 b.Property<string>("RoleId")
                     .IsRequired()
-                    .HasColumnType("nvarchar(450)");
+                    .HasColumnType("character varying(450)");
 
                 b.HasKey("Id");
 
@@ -74,18 +74,18 @@ namespace avamvc.Data.Migrations {
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b => {
                 b.Property<string>("Id")
-                    .HasColumnType("nvarchar(450)");
+                    .HasColumnType("character varying(450)");
 
                 b.Property<int>("AccessFailedCount")
                     .HasColumnType("int");
 
                 b.Property<string>("ConcurrencyStamp")
                     .IsConcurrencyToken()
-                    .HasColumnType("nvarchar(max)");
+                    .HasColumnType("text");
 
                 b.Property<string>("Email")
                     .HasMaxLength(256)
-                    .HasColumnType("nvarchar(256)");
+                    .HasColumnType("character varying(256)");
 
                 b.Property<bool>("EmailConfirmed")
                     .HasColumnType("bit");
@@ -98,30 +98,30 @@ namespace avamvc.Data.Migrations {
 
                 b.Property<string>("NormalizedEmail")
                     .HasMaxLength(256)
-                    .HasColumnType("nvarchar(256)");
+                    .HasColumnType("character varying(256)");
 
                 b.Property<string>("NormalizedUserName")
                     .HasMaxLength(256)
-                    .HasColumnType("nvarchar(256)");
+                    .HasColumnType("character varying(256)");
 
                 b.Property<string>("PasswordHash")
-                    .HasColumnType("nvarchar(max)");
+                    .HasColumnType("text");
 
                 b.Property<string>("PhoneNumber")
-                    .HasColumnType("nvarchar(max)");
+                    .HasColumnType("text");
 
                 b.Property<bool>("PhoneNumberConfirmed")
                     .HasColumnType("bit");
 
                 b.Property<string>("SecurityStamp")
-                    .HasColumnType("nvarchar(max)");
+                    .HasColumnType("text");
 
                 b.Property<bool>("TwoFactorEnabled")
                     .HasColumnType("bit");
 
                 b.Property<string>("UserName")
                     .HasMaxLength(256)
-                    .HasColumnType("nvarchar(256)");
+                    .HasColumnType("character varying(256)");
 
                 b.HasKey("Id");
 
@@ -144,14 +144,14 @@ namespace avamvc.Data.Migrations {
                 SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                 b.Property<string>("ClaimType")
-                    .HasColumnType("nvarchar(max)");
+                    .HasColumnType("text");
 
                 b.Property<string>("ClaimValue")
-                    .HasColumnType("nvarchar(max)");
+                    .HasColumnType("text");
 
                 b.Property<string>("UserId")
                     .IsRequired()
-                    .HasColumnType("nvarchar(450)");
+                    .HasColumnType("character varying(450)");
 
                 b.HasKey("Id");
 
@@ -170,11 +170,11 @@ namespace avamvc.Data.Migrations {
                     .HasColumnType("text");
 
                 b.Property<string>("ProviderDisplayName")
-                    .HasColumnType("nvarchar(max)");
+                    .HasColumnType("text");
 
                 b.Property<string>("UserId")
                     .IsRequired()
-                    .HasColumnType("nvarchar(450)");
+                    .HasColumnType("character varying(450)");
 
                 b.HasKey("LoginProvider", "ProviderKey");
 
@@ -185,10 +185,10 @@ namespace avamvc.Data.Migrations {
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b => {
                 b.Property<string>("UserId")
-                    .HasColumnType("nvarchar(450)");
+                    .HasColumnType("character varying(450)");
 
                 b.Property<string>("RoleId")
-                    .HasColumnType("nvarchar(450)");
+                    .HasColumnType("character varying(450)");
 
                 b.HasKey("UserId", "RoleId");
 
@@ -199,7 +199,7 @@ namespace avamvc.Data.Migrations {
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b => {
                 b.Property<string>("UserId")
-                    .HasColumnType("nvarchar(450)");
+                    .HasColumnType("character varying(450)");
 
                 b.Property<string>("LoginProvider")
                     .HasMaxLength(128)
@@ -210,7 +210,7 @@ namespace avamvc.Data.Migrations {
                     .HasColumnType("text");
 
                 b.Property<string>("Value")
-                    .HasColumnType("nvarchar(max)");
+                    .HasColumnType("text");
 
                 b.HasKey("UserId", "LoginProvider", "Name");
 
@@ -225,11 +225,11 @@ namespace avamvc.Data.Migrations {
                 SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                 b.Property<string>("AuthorId")
-                    .HasColumnType("nvarchar(450)");
+                    .HasColumnType("character varying(450)");
 
                 b.Property<string>("Content")
                     .IsRequired()
-                    .HasColumnType("nvarchar(max)");
+                    .HasColumnType("text");
 
                 b.Property<DateTime>("CreatedAt")
                     .HasColumnType("timestamp without time zone");
@@ -238,11 +238,11 @@ namespace avamvc.Data.Migrations {
                     .HasColumnType("timestamp without time zone");
 
                 b.Property<string>("FilePath")
-                    .HasColumnType("nvarchar(max)");
+                    .HasColumnType("text");
 
                 b.Property<string>("Title")
                     .IsRequired()
-                    .HasColumnType("nvarchar(max)");
+                    .HasColumnType("text");
 
                 b.HasKey("Id");
 

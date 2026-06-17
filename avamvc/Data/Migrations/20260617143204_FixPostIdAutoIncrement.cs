@@ -3,14 +3,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace avamvc.Data.Migrations
-{
+namespace avamvc.Data.Migrations {
     /// <inheritdoc />
-    public partial class FixPostIdAutoIncrement : Migration
-    {
+    public partial class FixPostIdAutoIncrement : Migration {
         /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropIndex(
                 name: "UserNameIndex",
                 table: "AspNetUsers");
@@ -22,7 +19,7 @@ namespace avamvc.Data.Migrations
             migrationBuilder.AlterColumn<DateTime>(
                 name: "EditAt",
                 table: "Posts",
-                type: "datetime2",
+                type: "timestamp without time zone",
                 nullable: false,
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone");
@@ -30,7 +27,7 @@ namespace avamvc.Data.Migrations
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedAt",
                 table: "Posts",
-                type: "datetime2",
+                type: "timestamp without time zone",
                 nullable: false,
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone");
@@ -38,7 +35,7 @@ namespace avamvc.Data.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "AspNetUserTokens",
-                type: "nvarchar(128)",
+                type: "text",
                 maxLength: 128,
                 nullable: false,
                 oldClrType: typeof(string),
@@ -48,7 +45,7 @@ namespace avamvc.Data.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "LoginProvider",
                 table: "AspNetUserTokens",
-                type: "nvarchar(128)",
+                type: "text",
                 maxLength: 128,
                 nullable: false,
                 oldClrType: typeof(string),
@@ -58,7 +55,7 @@ namespace avamvc.Data.Migrations
             migrationBuilder.AlterColumn<DateTimeOffset>(
                 name: "LockoutEnd",
                 table: "AspNetUsers",
-                type: "datetimeoffset",
+                type: "timestamp with time zone",
                 nullable: true,
                 oldClrType: typeof(DateTimeOffset),
                 oldType: "timestamp with time zone",
@@ -67,7 +64,7 @@ namespace avamvc.Data.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "ProviderKey",
                 table: "AspNetUserLogins",
-                type: "nvarchar(128)",
+                type: "text",
                 maxLength: 128,
                 nullable: false,
                 oldClrType: typeof(string),
@@ -77,7 +74,7 @@ namespace avamvc.Data.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "LoginProvider",
                 table: "AspNetUserLogins",
-                type: "nvarchar(128)",
+                type: "text",
                 maxLength: 128,
                 nullable: false,
                 oldClrType: typeof(string),
@@ -89,19 +86,18 @@ namespace avamvc.Data.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true,
-                filter: "[NormalizedUserName] IS NOT NULL");
+                filter: "\"NormalizedUserName\" IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
                 unique: true,
-                filter: "[NormalizedName] IS NOT NULL");
+                filter: "\"NormalizedName\" IS NOT NULL");
         }
 
         /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropIndex(
                 name: "UserNameIndex",
                 table: "AspNetUsers");
@@ -116,7 +112,7 @@ namespace avamvc.Data.Migrations
                 type: "timestamp without time zone",
                 nullable: false,
                 oldClrType: typeof(DateTime),
-                oldType: "datetime2");
+                oldType: "timestamp without time zone");
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedAt",
@@ -124,7 +120,7 @@ namespace avamvc.Data.Migrations
                 type: "timestamp without time zone",
                 nullable: false,
                 oldClrType: typeof(DateTime),
-                oldType: "datetime2");
+                oldType: "timestamp without time zone");
 
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
@@ -133,7 +129,7 @@ namespace avamvc.Data.Migrations
                 maxLength: 128,
                 nullable: false,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(128)",
+                oldType: "text",
                 oldMaxLength: 128);
 
             migrationBuilder.AlterColumn<string>(
@@ -143,7 +139,7 @@ namespace avamvc.Data.Migrations
                 maxLength: 128,
                 nullable: false,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(128)",
+                oldType: "text",
                 oldMaxLength: 128);
 
             migrationBuilder.AlterColumn<DateTimeOffset>(
@@ -152,7 +148,7 @@ namespace avamvc.Data.Migrations
                 type: "timestamp with time zone",
                 nullable: true,
                 oldClrType: typeof(DateTimeOffset),
-                oldType: "datetimeoffset",
+                oldType: "timestamp with time zone",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
@@ -162,7 +158,7 @@ namespace avamvc.Data.Migrations
                 maxLength: 128,
                 nullable: false,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(128)",
+                oldType: "text",
                 oldMaxLength: 128);
 
             migrationBuilder.AlterColumn<string>(
@@ -172,7 +168,7 @@ namespace avamvc.Data.Migrations
                 maxLength: 128,
                 nullable: false,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(128)",
+                oldType: "text",
                 oldMaxLength: 128);
 
             migrationBuilder.CreateIndex(
