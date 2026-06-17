@@ -652,7 +652,7 @@ $.validator.addMethod( "dateFA", function( value, element ) {
  * @desc Declares an optional input element whose value must be a valid date.
  *
  * @name $.validator.methods.dateITA
- * @type Boolean
+ * @type bit
  * @cat Plugins/Validate/Methods
  */
 $.validator.addMethod( "dateITA", function( value, element ) {
@@ -1152,7 +1152,7 @@ $.validator.addMethod( "nowhitespace", function( value, element ) {
 * @result false
 *
 * @name $.validator.methods.pattern
-* @type Boolean
+* @type bit
 * @cat Plugins/Validate/Methods
 */
 $.validator.addMethod( "pattern", function( value, element, param ) {
@@ -1270,7 +1270,7 @@ $.validator.addMethod( "postalcodeBR", function( cep_value, element ) {
  * @result false
  *
  * @name jQuery.validator.methods.postalCodeCA
- * @type Boolean
+ * @type bit
  * @cat Plugins/Validate/Methods
  */
 $.validator.addMethod( "postalCodeCA", function( value, element ) {
@@ -1455,7 +1455,7 @@ $.validator.addMethod( "url2", function( value, element ) {
  * @desc Declares a required input element whose value must be a valid vehicle identification number.
  *
  * @name $.validator.methods.vinUS
- * @type Boolean
+ * @type bit
  * @cat Plugins/Validate/Methods
  */
 $.validator.addMethod( "vinUS", function( v ) {

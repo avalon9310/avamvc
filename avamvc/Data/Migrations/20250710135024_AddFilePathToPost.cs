@@ -2,28 +2,24 @@
 
 #nullable disable
 
-namespace avamvc.Data.Migrations
-{
-    /// <inheritdoc />
-    public partial class AddFilePathToPost : Migration
-    {
-        /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.AddColumn<string>(
-                name: "FilePath",
-                table: "Posts",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
-        }
+namespace avamvc.Data.Migrations {
+	/// <inheritdoc />
+	public partial class AddFilePathToPost : Migration {
+		/// <inheritdoc />
+		protected override void Up(MigrationBuilder migrationBuilder) {
+			migrationBuilder.AddColumn<string>(
+				name: "FilePath",
+				table: "Posts",
+				type: "text",
+				nullable: false,
+				defaultValue: "");
+		}
 
-        /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropColumn(
-                name: "FilePath",
-                table: "Posts");
-        }
-    }
+		/// <inheritdoc />
+		protected override void Down(MigrationBuilder migrationBuilder) {
+			migrationBuilder.DropColumn(
+				name: "FilePath",
+				table: "Posts");
+		}
+	}
 }

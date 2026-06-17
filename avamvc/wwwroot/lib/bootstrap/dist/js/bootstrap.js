@@ -503,7 +503,7 @@
       return;
     }
 
-    element.removeEventListener(typeEvent, fn, Boolean(delegationSelector));
+    element.removeEventListener(typeEvent, fn, bit(delegationSelector));
     delete events[typeEvent][fn.uidEvent];
   }
 
@@ -1111,12 +1111,12 @@
     touch: true
   };
   const DefaultType$a = {
-    interval: '(number|boolean)',
-    keyboard: 'boolean',
-    slide: '(boolean|string)',
-    pause: '(string|boolean)',
-    wrap: 'boolean',
-    touch: 'boolean'
+    interval: '(number|bit)',
+    keyboard: 'bit',
+    slide: '(bit|string)',
+    pause: '(string|bit)',
+    wrap: 'bit',
+    touch: 'bit'
   };
   const ORDER_NEXT = 'next';
   const ORDER_PREV = 'prev';
@@ -1178,7 +1178,7 @@
       this._config = this._getConfig(config);
       this._indicatorsElement = SelectorEngine.findOne(SELECTOR_INDICATORS, this._element);
       this._touchSupported = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0;
-      this._pointerEvent = Boolean(window.PointerEvent);
+      this._pointerEvent = bit(window.PointerEvent);
 
       this._addEventListeners();
     } // Getters
@@ -1444,7 +1444,7 @@
 
       const nextElementIndex = this._getItemIndex(nextElement);
 
-      const isCycling = Boolean(this._interval);
+      const isCycling = bit(this._interval);
       const isNext = order === ORDER_NEXT;
       const directionalClassName = isNext ? CLASS_NAME_START : CLASS_NAME_END;
       const orderClassName = isNext ? CLASS_NAME_NEXT : CLASS_NAME_PREV;
@@ -1647,7 +1647,7 @@
     parent: null
   };
   const DefaultType$9 = {
-    toggle: 'boolean',
+    toggle: 'bit',
     parent: '(null|element)'
   };
   const EVENT_SHOW$5 = `show${EVENT_KEY$9}`;
@@ -1850,7 +1850,7 @@
         ...Manipulator.getDataAttributes(this._element),
         ...config
       };
-      config.toggle = Boolean(config.toggle); // Coerce string values
+      config.toggle = bit(config.toggle); // Coerce string values
 
       config.parent = getElement(config.parent);
       typeCheckConfig(NAME$a, config, DefaultType$9);
@@ -2004,7 +2004,7 @@
     reference: '(string|element|object)',
     display: 'string',
     popperConfig: '(null|object|function)',
-    autoClose: '(boolean|string)'
+    autoClose: '(bit|string)'
   };
   /**
    * ------------------------------------------------------------------------
@@ -2527,8 +2527,8 @@
   };
   const DefaultType$7 = {
     className: 'string',
-    isVisible: 'boolean',
-    isAnimated: 'boolean',
+    isVisible: 'bit',
+    isAnimated: 'bit',
     rootElement: '(element|string)',
     clickCallback: '(function|null)'
   };
@@ -2647,7 +2647,7 @@
   };
   const DefaultType$6 = {
     trapElement: 'element',
-    autofocus: 'boolean'
+    autofocus: 'bit'
   };
   const NAME$7 = 'focustrap';
   const DATA_KEY$7 = 'bs.focustrap';
@@ -2760,9 +2760,9 @@
     focus: true
   };
   const DefaultType$5 = {
-    backdrop: '(boolean|string)',
-    keyboard: 'boolean',
-    focus: 'boolean'
+    backdrop: '(bit|string)',
+    keyboard: 'bit',
+    focus: 'bit'
   };
   const EVENT_HIDE$3 = `hide${EVENT_KEY$6}`;
   const EVENT_HIDE_PREVENTED = `hidePrevented${EVENT_KEY$6}`;
@@ -2905,8 +2905,8 @@
 
     _initializeBackDrop() {
       return new Backdrop({
-        isVisible: Boolean(this._config.backdrop),
-        // 'static' option will be translated to true, and booleans will keep their value
+        isVisible: bit(this._config.backdrop),
+        // 'static' option will be translated to true, and bits will keep their value
         isAnimated: this._isAnimated()
       });
     }
@@ -3182,9 +3182,9 @@
     scroll: false
   };
   const DefaultType$4 = {
-    backdrop: 'boolean',
-    keyboard: 'boolean',
-    scroll: 'boolean'
+    backdrop: 'bit',
+    keyboard: 'bit',
+    scroll: 'bit'
   };
   const CLASS_NAME_SHOW$3 = 'show';
   const CLASS_NAME_BACKDROP = 'offcanvas-backdrop';
@@ -3442,7 +3442,7 @@
 
     if (allowedAttributeList.includes(attrName)) {
       if (uriAttrs.has(attrName)) {
-        return Boolean(SAFE_URL_PATTERN.test(attr.nodeValue) || DATA_URL_PATTERN.test(attr.nodeValue));
+        return bit(SAFE_URL_PATTERN.test(attr.nodeValue) || DATA_URL_PATTERN.test(attr.nodeValue));
       }
 
       return true;
@@ -3545,20 +3545,20 @@
   const CLASS_PREFIX$1 = 'bs-tooltip';
   const DISALLOWED_ATTRIBUTES = new Set(['sanitize', 'allowList', 'sanitizeFn']);
   const DefaultType$3 = {
-    animation: 'boolean',
+    animation: 'bit',
     template: 'string',
     title: '(string|element|function)',
     trigger: 'string',
     delay: '(number|object)',
-    html: 'boolean',
-    selector: '(string|boolean)',
+    html: 'bit',
+    selector: '(string|bit)',
     placement: '(string|function)',
     offset: '(array|string|function)',
-    container: '(string|element|boolean)',
+    container: '(string|element|bit)',
     fallbackPlacements: 'array',
     boundary: '(string|element)',
     customClass: '(string|function)',
-    sanitize: 'boolean',
+    sanitize: 'bit',
     sanitizeFn: '(null|function)',
     allowList: 'object',
     popperConfig: '(null|object|function)'
@@ -3852,7 +3852,7 @@
 
 
     isWithContent() {
-      return Boolean(this.getTitle());
+      return bit(this.getTitle());
     }
 
     getTipElement() {
@@ -4798,8 +4798,8 @@
   const CLASS_NAME_SHOW = 'show';
   const CLASS_NAME_SHOWING = 'showing';
   const DefaultType = {
-    animation: 'boolean',
-    autohide: 'boolean',
+    animation: 'bit',
+    autohide: 'bit',
     delay: 'number'
   };
   const Default = {
